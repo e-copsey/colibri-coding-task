@@ -8,7 +8,8 @@ from b_bronze.transforms import get_batch_turbine_data
 @log
 def ingest_turbine_data():
     """
-    This is a dummy function that simulates the ingestion of turbine data to the 'data/raw/' location
+    This is the orchestrating function that ingests the raw turbine data incrementally using batch processing and a duckdb metadata table.
+    
     """
     # Get Config dictionary for process
     bronze_configs = get_confs("b_bronze", "ingest_turbine_data")
