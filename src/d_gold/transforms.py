@@ -2,6 +2,9 @@ import pandas as pd
 
 
 def aggregate_daily(cleaned_df):
+    """
+    Aggregate daily turbine power statistics (min, max, mean).
+    """
 
     cleaned_df["timestamp"] = pd.to_datetime(cleaned_df["timestamp"])
 

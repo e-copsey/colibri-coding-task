@@ -8,7 +8,9 @@ from b_bronze.transforms import get_batch_turbine_data
 @log
 def ingest_turbine_data():
     """
-    This is the orchestrating function that ingests the raw turbine data incrementally using batch processing and a duckdb metadata table.
+    This is the orchestrating function that ingests the raw turbine data incrementally using batch processing and a duckdb metadata table
+    to incrementally process new data.
+
     
     """
     # Get Config dictionary for process

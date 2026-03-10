@@ -5,6 +5,7 @@ Git Repo containing the data processing pipeline for the Colibri Digital coding 
 - Restatements are not possible. If the data is delivered, it will remain at those values.
 - If the time window for a data point to be submitted is missed, the record will not be added at a later date.
 - Data is loaded daily for the previous day, so there will never be a case where only half a day's data is present.
+- A missing record is classified as not being there in the data, not just missing power value.
 
 
 # Modifications made to data

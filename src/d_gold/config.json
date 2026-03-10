@@ -19,7 +19,9 @@
         "output": [
             {
                 "dataframe_name": "turbine_summary",
+                "table_name": "analytics.turbine_summary",
                 "file_path": "data/d_gold/turbine_summary",
+                "db_path": "db/windfarm.duckdb",
                 "file_format": "parquet",
                 "add_timestamp_to_filename": true
             }

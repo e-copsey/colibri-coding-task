@@ -9,7 +9,7 @@ def land_turbine_data(ingestion_date=datetime.now().strftime("%d/%m/%Y")):
     """
     raw_configs = get_confs("a_raw","land_turbine_data")
     
-    for i in range(4):
+    for i in range(1,4):
         print(f"INFO: Ingesting turbine data for data group {i} for {ingestion_date} ...")
 
     return None

@@ -6,24 +6,20 @@ from c_silver.data_cleaning import data_cleaning
 from d_gold.turbine_summary import generate_turbine_summary
 import duckdb
 
-# import os
-# print(os.path.abspath("db/windfarm.duckdb"))
 
-# HELPERS TO RESET THE RUN
-# wipe_db(con,wipe_data=True, wipe_layer="all")
-# wipe_db(wipe_data=False, wipe_layer="all")
-# con = duckdb.connect("C:\\dev\\colibri-coding-task\\db\\windfarm.duckdb")
-initialise_db()
+def full_pipeline_run():
+    """Orchestrate the full pipeline run."""
+    # HELPER TO INITIALISE DB FOR LATER  ANALYTICS
+    initialise_db()
 
+    # RAW INGESTION
+    land_turbine_data()
 
-# RAW INGESTION
-# land_turbine_data()
+    # BRONZE PROCESSING
+    ingest_turbine_data()
 
-# BRONZE PROCESSING
-# ingest_turbine_data()
+    # SILVER PROCESSING
+    data_cleaning()
 
-# SILVER PROCESSING
-# data_cleaning()
-
-# GOLD PROCESSING
-generate_turbine_summary()
+    # GOLD PROCESSING
+    generate_turbine_summary()

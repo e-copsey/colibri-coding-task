@@ -1,7 +1,34 @@
 import pandas as pd
+import glob
+import duckdb
 from datetime import datetime
 import os
 from utils.constants import FILE_FORMATS
+
+def load_into_duckdb(output_configs:list):
+    """
+    Loads Parquet files from specified directories into DuckDB tables, creating the tables if they do not already exist.
+    """
+
+    for table_config in output_configs:
+        table_name = table_config.get("table_name")
+        file_path = table_config.get("file_path")
+        file_format = table_config.get("file_format")
+        duck_db = table_config.get("db_path")
+        
+        if file_format == "parquet" and os.path.isdir(file_path):
+            # Get list of parquet files in the directory
+            parquet_files = glob.glob(os.path.join(file_path, "*.parquet"))
+            
+            if parquet_files:  # Only proceed if there are matching parquet files
+                con = duckdb.connect(duck_db)
+                con.execute(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM '{file_path}/*.parquet';")
+                con.close()
+            else:
+                print(f"No parquet files found in {file_path}. Skipping {table_name}.")
+        else:
+            print(f"Path does not exist or file format is not parquet. Skipping {table_name}.")
+
 
 def create_path_if_not_exists(path):
     """
@@ -27,6 +54,9 @@ def create_path_if_not_exists(path):
 
 
 def write_files(output_configs: list, data_dict: dict):
+    """
+    Writes dataframes from the provided dictionary to files in the specified formats, optionally adding a timestamp to filenames and skipping empty dataframes.
+    """
 
     for table_config in output_configs:
         
@@ -46,10 +76,10 @@ def write_files(output_configs: list, data_dict: dict):
 
         # Writer logic based on file format - exrendable for more formats as needed
         if file_format == "csv":
-            print(file_path)
+            print("Data written to", file_path)
             data_dict[dataframe_name].to_csv(file_path, index=False)
         elif file_format == "parquet":
-            print(file_path + "/" + file_name)
+            print("Data written to", file_path + "/" + file_name)
             data_dict[dataframe_name].to_parquet(
                 file_path + "/" + file_name,
                 index=False,

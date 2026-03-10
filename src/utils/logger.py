@@ -3,6 +3,10 @@ from datetime import datetime
 
 
 def log(func):
+    """
+    Prints the start and end timestamps of a function execution to provide simple runtime logging.
+    """
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start_time = datetime.now()
