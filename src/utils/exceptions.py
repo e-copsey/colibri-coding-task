@@ -1,0 +1,2 @@
+class MissingPipelineConfigs(Exception):
+    pass

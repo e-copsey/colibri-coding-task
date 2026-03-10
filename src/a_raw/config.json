@@ -1,0 +1,16 @@
+{
+    "land_turbine_data": {
+        "input": [
+            {
+                "dataframe_name": "",
+                "file_path": ""
+            }
+        ],
+        "output": [
+            {
+                "dataframe_name": "",
+                "file_path":""
+            }
+        ]
+    }
+}
