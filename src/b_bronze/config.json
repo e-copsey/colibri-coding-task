@@ -23,6 +23,7 @@
                 "dataframe_name": "data_group_1",
                 "file_path": "data/a_raw/data_group_1.csv",
                 "file_format": "csv",
+                "add_source_col": true,
                 "read_options": {
                     "header": 0,
                     "dtype": {
@@ -41,6 +42,7 @@
                 "dataframe_name": "data_group_2",
                 "file_path": "data/a_raw/data_group_2.csv",
                 "file_format": "csv",
+                "add_source_col": true,
                 "read_options": {
                     "header": 0,
                     "dtype": {
@@ -59,6 +61,7 @@
                 "dataframe_name": "data_group_3",
                 "file_path": "data/a_raw/data_group_3.csv",
                 "file_format": "csv",
+                "add_source_col": true,
                 "read_options": {
                     "header": 0,
                     "dtype": {
@@ -77,18 +80,26 @@
         "output": [
             {
                 "dataframe_name": "data_group_1",
-                "file_path": "data/b_bronze/data_group_1.parquet",
-                "file_format": "parquet"
+                "file_path": "data/b_bronze/data_group_1",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
             },
             {
                 "dataframe_name": "data_group_2",
-                "file_path": "data/b_bronze/data_group_2.parquet",
-                "file_format": "parquet"
+                "file_path": "data/b_bronze/data_group_2",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
             },
             {
                 "dataframe_name": "data_group_3",
-                "file_path": "data/b_bronze/data_group_3.parquet",
-                "file_format": "parquet"
+                "file_path": "data/b_bronze/data_group_3",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            },
+            {
+                "dataframe_name": "ingestion_metadata",
+                "file_path": "data/b_bronze/ingestion_metadata.csv",
+                "file_format": "csv"
             }
         ]
     }
