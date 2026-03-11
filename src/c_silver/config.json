@@ -1,0 +1,38 @@
+{
+    "data_cleaning": {
+        "metadata": [
+            {
+                "dataframe_name": "bronze_processing_state",
+                "file_format": "duckdb",
+                "db_path": "db/windfarm.duckdb",
+                "metadata_table_name":"bronze_processing_state"
+            }
+        ],
+        "input": [
+            {
+                "dataframe_name": "bronze_data",
+                "file_path": "data/b_bronze/",
+                "file_format": "parquet",
+                "is_batch": true
+            }
+        ],
+        "output": [
+            {
+                "dataframe_name": "turbine_clean",
+                "file_path": "data/c_silver/turbine_clean",
+                "db_path": "db/windfarm.duckdb",
+                "table_name": "analytics.turbine_clean",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            },
+            {
+                "dataframe_name": "silver_data_quality_report",
+                "file_path": "data/c_silver/silver_data_quality_report",
+                "db_path": "db/windfarm.duckdb",
+                "table_name": "analytics.silver_data_quality_report",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            }
+        ]
+    }
+}

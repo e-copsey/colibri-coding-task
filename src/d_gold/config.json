@@ -1,0 +1,30 @@
+{
+    "generate_turbine_summary": {
+        "metadata": [
+            {
+                "dataframe_name": "silver_processing_state_turbine_summary",
+                "file_format": "duckdb",
+                "db_path": "db/windfarm.duckdb",
+                "metadata_table_name":"silver_processing_state_turbine_summary"
+            }
+        ],
+        "input": [
+            {
+                "dataframe_name": "turbine_clean",
+                "file_path": "data/c_silver/turbine_clean/",
+                "file_format": "parquet",
+                "is_batch": true
+            }
+        ],
+        "output": [
+            {
+                "dataframe_name": "turbine_summary",
+                "table_name": "analytics.turbine_summary",
+                "file_path": "data/d_gold/turbine_summary",
+                "db_path": "db/windfarm.duckdb",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            }
+        ]
+    }
+}

@@ -1,0 +1,106 @@
+{
+    "ingest_turbine_data": {
+        "metadata": [
+            {
+                "dataframe_name": "ingestion_metadata",
+                "file_path": "data/b_bronze/ingestion_metadata.csv",
+                "file_format": "csv",
+                "read_options":{
+                    "header": 0,
+                    "dtype": {
+                        "source_file": "str",
+                        "turbine_id": "int16"
+                    },
+                    "parse_dates": [
+                        "last_timestamp_ingested"
+                    ],
+                    "date_format":"%d-%m-%Y %H:%M"
+                }
+            }
+        ],
+        "input": [
+            {
+                "dataframe_name": "data_group_1",
+                "file_path": "data/a_raw/data_group_1.csv",
+                "file_format": "csv",
+                "add_source_col": true,
+                "read_options": {
+                    "header": 0,
+                    "dtype": {
+                        "turbine_id": "int16",
+                        "wind_speed": "float32",
+                        "wind_direction": "int16",
+                        "power_output": "float32"
+                    },
+                    "parse_dates": [
+                        "timestamp"
+                    ],
+                    "date_format":"%d-%m-%Y %H:%M"
+                }
+            },
+            {
+                "dataframe_name": "data_group_2",
+                "file_path": "data/a_raw/data_group_2.csv",
+                "file_format": "csv",
+                "add_source_col": true,
+                "read_options": {
+                    "header": 0,
+                    "dtype": {
+                        "turbine_id": "int16",
+                        "wind_speed": "float32",
+                        "wind_direction": "int16",
+                        "power_output": "float32"
+                    },
+                    "parse_dates": [
+                        "timestamp"
+                    ],
+                    "date_format":"%d-%m-%Y %H:%M"
+                }
+            },
+            {
+                "dataframe_name": "data_group_3",
+                "file_path": "data/a_raw/data_group_3.csv",
+                "file_format": "csv",
+                "add_source_col": true,
+                "read_options": {
+                    "header": 0,
+                    "dtype": {
+                        "turbine_id": "int16",
+                        "wind_speed": "float32",
+                        "wind_direction": "int16",
+                        "power_output": "float32"
+                    },
+                    "parse_dates": [
+                        "timestamp"
+                    ],
+                    "date_format":"%d-%m-%Y %H:%M"
+                }
+            }
+        ],
+        "output": [
+            {
+                "dataframe_name": "data_group_1",
+                "file_path": "data/b_bronze/data_group_1",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            },
+            {
+                "dataframe_name": "data_group_2",
+                "file_path": "data/b_bronze/data_group_2",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            },
+            {
+                "dataframe_name": "data_group_3",
+                "file_path": "data/b_bronze/data_group_3",
+                "file_format": "parquet",
+                "add_timestamp_to_filename": true
+            },
+            {
+                "dataframe_name": "ingestion_metadata",
+                "file_path": "data/b_bronze/ingestion_metadata.csv",
+                "file_format": "csv"
+            }
+        ]
+    }
+}
