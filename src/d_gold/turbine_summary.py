@@ -34,6 +34,5 @@ def generate_turbine_summary():
     
     # Write Data according to output configs
     write_files(gold_configs.get("output"), processed_data)
-    load_into_duckdb(gold_configs.get("output"))
 
     return None

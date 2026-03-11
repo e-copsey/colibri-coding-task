@@ -34,6 +34,5 @@ def data_cleaning():
 
     # Write Data according to output configs
     write_files(silver_configs.get("output"), processed_data)
-    load_into_duckdb(silver_configs.get("output"))
 
     return None

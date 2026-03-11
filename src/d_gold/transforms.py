@@ -34,6 +34,7 @@ def highlight_anomalies(summary_df):
     Function that highlights anomalies based on the rule:
         Anomalies can be defined as turbines whose output is outside of 2 standard deviations from the mean.
     """
+
     # Fleet daily average (across all turbines)
     summary_df["fleet_avg"] = summary_df.groupby("date")["turbine_power_avg"].transform(
         "mean"
@@ -54,12 +55,14 @@ def highlight_anomalies(summary_df):
 
     summary_with_anom = summary_df.sort_values(["date", "turbine_id"])
 
-    return summary_with_anom[[
-        "date",
-        "turbine_id",
-        "turbine_power_min",
-        "turbine_power_max",
-        "turbine_power_avg",
-        "fleet_avg",
-        "is_anomaly",
-    ]]
+    return summary_with_anom[
+        [
+            "date",
+            "turbine_id",
+            "turbine_power_min",
+            "turbine_power_max",
+            "turbine_power_avg",
+            "fleet_avg",
+            "is_anomaly",
+        ]
+    ]
